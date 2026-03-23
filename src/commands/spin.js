@@ -83,32 +83,34 @@ function buildMenu(player) {
       })
     );
 }
+async function execute(interaction) {
+    const player = getPlayer(interaction.user.id);
+    const menu = buildMenu(player);
+    const row = new ActionRowBuilder().addComponents(menu);
+
+    const embed = new EmbedBuilder()
+        .setColor(0x9b59b6)
+        .setTitle("🎰 Gacha Spin")
+        .setDescription(`You have **${player.tokens} tokens**.\nPick a pool below to spin!`);
+
+    return interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
+}
+
+// Called from index.js when the select menu is used
+async function handleSelect(interaction) {
+    if (interaction.user.id !== interaction.user.id) {
+        return interaction.reply({ content: "❌ This isn't your spin menu!", ephemeral: true });
+    }
+    const poolKey = interaction.values[0];
+    const player = getPlayer(interaction.user.id);
+    await doSpin(interaction, poolKey, player);
+}
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("spin")
     .setDescription("Spin a gacha pool to get a new item!"),
 
-  async execute(interaction) {
-    const player = getPlayer(interaction.user.id);
-    const menu = buildMenu(player);
-    const row = new ActionRowBuilder().addComponents(menu);
-
-    const embed = new EmbedBuilder()
-      .setColor(0x9b59b6)
-      .setTitle("🎰 Gacha Spin")
-      .setDescription(`You have **${player.tokens} tokens**.\nPick a pool below to spin!`);
-
-    return interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
-  },
-
-  // Called from index.js when the select menu is used
-  async handleSelect(interaction) {
-    if (interaction.user.id !== interaction.user.id) {
-      return interaction.reply({ content: "❌ This isn't your spin menu!", ephemeral: true });
-    }
-    const poolKey = interaction.values[0];
-    const player = getPlayer(interaction.user.id);
-    await doSpin(interaction, poolKey, player);
-  }
+  execute,
+  handleSelect,
 };

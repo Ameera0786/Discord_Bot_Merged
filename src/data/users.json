@@ -1,22 +1,22 @@
 {
   "733448947955400796": {
-    "money": 1228,
+    "money": 1246,
     "energy": 100,
-    "hunger": 5,
+    "hunger": 30,
     "luck": 1,
-    "lastWork": 1774252329871,
+    "lastWork": 1774254264151,
     "maxEnergy": 100,
     "maxHunger": 100,
     "foodInventory": {
       "sandwich": {
-        "qty": 5
+        "qty": 0
       },
       "steak": {
         "qty": 1
       }
     },
-    "tokens": 2,
-    "lastFight": 1774253013379,
+    "tokens": 110,
+    "lastFight": 1774254242817,
     "inventory": {
       "swords": [
         {
