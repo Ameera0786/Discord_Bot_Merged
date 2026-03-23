@@ -45,6 +45,15 @@ client.on('interactionCreate', async interaction => {
                 const menuCommand = client.commands.get("rates");
                 if (menuCommand && menuCommand.handleSelect) { await menuCommand.handleSelect(interaction); }
             }
+
+            if (interaction.isButton()) {
+                if (interaction.customId === 'back_to_menu') {
+                    const menuCommand = client.commands.get("rates");
+                    if (menuCommand && menuCommand.handleButton) {
+                        await menuCommand.handleButton(interaction);
+                    }
+                }
+            }
         }
     } catch (err) {
         console.error('Interaction error:', err);

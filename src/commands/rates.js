@@ -1,8 +1,8 @@
-const { SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, ActionRowBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, ActionRowBuilder, StringSelectMenuOptionBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const { GACHA_POOLS } = require("../data/gachaPools");
 const { rarityColor, rarityStars, fmtMultiplier } = require("../utils/gacha");
 
-async function execute(interaction) {
+function showMenu() {
     const menu = new StringSelectMenuBuilder()
         .setCustomId("rates_select")
         .setPlaceholder("Choose a gacha pool to view drop rates...")
@@ -23,12 +23,16 @@ async function execute(interaction) {
         .setTitle("🎰 Gacha Pools")
         .setDescription("Select a pool below to view its drop rates!");
 
+    return { embed, row };
+}
+
+async function execute(interaction) {
+    const { embed, row } = showMenu();
     return interaction.reply({ embeds: [embed], components: [row], ephemeral: true });
 }
 
 // Called when a pool is selected from dropdown
 async function handleSelect(interaction) {
-    await interaction.deferUpdate();
     const poolKey = interaction.values[0];
     const pool = GACHA_POOLS[poolKey];
 
@@ -51,12 +55,14 @@ async function handleSelect(interaction) {
 
     for (const rarity of rarityOrder) {
         const items = byRarity[rarity];
-        if (!items) continue;
+        if (!items || items.length === 0) continue;
 
         const lines = items.map(item => {
             const chance = ((item.weight / totalWeight) * 100).toFixed(1);
             return `${item.emoji} **${item.name}** — ${fmtMultiplier(item.multiplier)} · **${chance}%**`;
         });
+
+        if (lines.length === 0) continue;
 
         embed.addFields({
             name: `${rarityStars(rarity)} ${rarity}`,
@@ -67,7 +73,20 @@ async function handleSelect(interaction) {
 
     embed.setFooter({ text: "Use /spin to try your luck!" });
 
-    return interaction.editReply({ embeds: [embed], components: [] });
+    const backButton = new ButtonBuilder()
+        .setCustomId("back_to_menu")
+        .setLabel("⬅ Back")
+        .setStyle(ButtonStyle.Primary);
+
+    const row = new ActionRowBuilder().addComponents(backButton);
+
+    return interaction.update({ embeds: [embed], components: [row] });
+}
+
+async function handleButton(interaction) {
+    if (interaction.customId !== "back_to_menu") return;
+    const { embed, row } = showMenu();
+    return interaction.update({ embeds: [embed], components: [row] });
 }
 
 module.exports = {
@@ -76,5 +95,6 @@ module.exports = {
         .setDescription("View drop rates for any gacha pool via dropdown"),
 
     execute,
-    handleSelect
+    handleSelect,
+    handleButton,
 };
