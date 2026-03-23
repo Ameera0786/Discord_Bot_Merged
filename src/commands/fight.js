@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const { getPlayer, savePlayer } = require("../utils/db");
 const { GACHA_POOLS, MOBS, FIGHT_COOLDOWN_MS } = require("../data/gachaPools");
 const { fmtMultiplier } = require("../utils/gacha");
@@ -25,17 +25,25 @@ function powerToBonus(power) {
   return Math.min(MAX_BONUS, Math.max(0, bonus));
 }
 
-async function execute(interaction) {
+async function runFight(interaction) {
+    const isButton = interaction.isButton();
+
+    if (isButton) {
+        try { await interaction.deferUpdate(); }
+        catch { return; }
+    } else { await interaction.deferReply(); }
+
     const userId = interaction.user.id;
     const player = getPlayer(userId);
 
     // --- Cooldown check ---
     const now = Date.now();
-    if (player.lastFight) {
+
+    if (!isButton && player.lastFight) {
         const elapsed = now - player.lastFight;
         if (elapsed < FIGHT_COOLDOWN_MS) {
             const remaining = Math.ceil((FIGHT_COOLDOWN_MS - elapsed) / 1000);
-            return interaction.reply({
+            return interaction.editReply({
                 embeds: [
                     new EmbedBuilder()
                         .setColor(0xe74c3c)
@@ -58,7 +66,7 @@ async function execute(interaction) {
     const playerWon = Math.random() < finalWinChance;
 
     // --- Cooldown always applies ---
-    player.lastFight = now;
+    if (!isButton) { player.lastFight = now; }
 
     const diffColor = { easy: 0x2ecc71, medium: 0xf39c12, hard: 0xe74c3c }[mob.difficulty] ?? 0x95a5a6;
     const diffLabel = mob.difficulty.charAt(0).toUpperCase() + mob.difficulty.slice(1);
@@ -120,12 +128,34 @@ async function execute(interaction) {
             .setFooter({ text: `Cooldown: ${FIGHT_COOLDOWN_MS / 1000}s • Use /spin to boost your power and win more fights!` });
     }
 
-    return interaction.reply({ embeds: [embed] });
-}
+    const fightAgainButton = new ButtonBuilder()
+        .setCustomId("fight_again")
+        .setLabel("⚔️ Fight Again")
+        .setStyle(ButtonStyle.Primary);
+
+    const row = new ActionRowBuilder().addComponents(fightAgainButton);
+
+    let message;
+
+    if (interaction.isButton()) { message = await interaction.message.edit({ embeds: [embed], components: [row] }); }
+    else { message = await interaction.editReply({ embeds: [embed], components: [row], fetchReply: true }); }
+
+    const collector = message.createMessageComponentCollector({ time: 60000, max: 1 });
+
+    collector.on("collect", async (i) => {
+        if (i.user.id !== interaction.user.id) { return i.reply({ content: "Not your fight!", ephemeral: true }); }
+
+        if (i.customId === "fight_again") { return runFight(i); }
+    });
+
+    collector.on("end", () => {
+        const disabledRow = new ActionRowBuilder().addComponents( ButtonBuilder.from(fightAgainButton).setDisabled(true) );
+        message.edit({ components: [disabledRow] }).catch(() => {});
+    });}
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("fight")
     .setDescription("Battle a random mob and earn tokens!"),
-  execute,
+  execute: runFight,
 };
