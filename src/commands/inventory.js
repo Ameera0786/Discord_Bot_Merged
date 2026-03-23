@@ -3,18 +3,14 @@ const { getPlayer } = require("../utils/db");
 const { GACHA_POOLS } = require("../data/gachaPools");
 const { rarityStars, getBestItem, fmtMultiplier } = require("../utils/gacha");
 
-async function execute(interaction) {
-    const userId = interaction.user.id;
-    const player = getPlayer(userId);
-    const filterPool = interaction.options.getString("pool");
-
+function buildInventoryEmbed(interaction, player, filterPool) {
     const poolsToShow = filterPool
         ? [[filterPool, GACHA_POOLS[filterPool]]]
         : Object.entries(GACHA_POOLS);
 
     const embed = new EmbedBuilder()
         .setColor(0x3498db)
-        .setTitle(`📦 ${interaction.user.username}'s Inventory`)
+        .setTitle(`📦 ${interaction.user.username}'s Gacha Inventory`)
         .setDescription(`💰 **${player.tokens} tokens** available`)
         .setThumbnail(interaction.user.displayAvatarURL());
 
@@ -35,7 +31,7 @@ async function execute(interaction) {
 
         hasAnything = true;
 
-        // Group items by id and count duplicates
+        // Group by id and count duplicates
         const grouped = {};
         for (const item of items) {
             if (!grouped[item.id]) grouped[item.id] = { ...item, count: 0 };
@@ -56,8 +52,8 @@ async function execute(interaction) {
         });
 
         embed.addFields({
-            name: `${pool.emoji} ${pool.displayName} (${items.length} total)`,
-            value: lines.join("\n") || "_Empty_",
+            name: `\n${pool.emoji} ${pool.displayName} (${items.length} total)`,
+            value: lines.join("\n"),
             inline: false
         });
     }
@@ -69,8 +65,14 @@ async function execute(interaction) {
         );
     }
 
-    embed.setFooter({ text: "✅ = Equipped (best in slot) • Duplicates are kept, only best is used" });
+    embed.setFooter({ text: "✅ = Equipped (best in slot) • Duplicates kept, only best is used" });
+    return embed;
+}
 
+async function execute(interaction) {
+    const filterPool = interaction.options.getString("pool");
+    const player = getPlayer(interaction.user.id);
+    const embed = buildInventoryEmbed(interaction, player, filterPool);
     return interaction.reply({ embeds: [embed] });
 }
 
@@ -90,6 +92,5 @@ module.exports = {
                     }))
                 )
         ),
-
-    execute
+    execute,
 };
