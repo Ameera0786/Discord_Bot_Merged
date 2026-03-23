@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Environment variables (IMPORTANT — never commit tokens)
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files (WebStorm / JetBrains)
+.idea/
+*.iml
+
+# Build / output
+dist/
+build/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Temporary files
+tmp/
+temp/
+
+# Coverage reports
+coverage/
+
+# Optional: lock files (keep ONE depending on your package manager)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Data files (contain user IDs and game state)
+src/utils/managers/users.json

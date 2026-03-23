@@ -1,0 +1,14 @@
+{
+  "name": "merged-bot",
+  "version": "1.0.0",
+  "description": "Work/food/gacha Discord bot",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "deploy": "node src/deploy_cmds.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.0.0"
+  }
+}

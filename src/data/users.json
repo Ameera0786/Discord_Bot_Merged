@@ -1,0 +1,49 @@
+{
+  "733448947955400796": {
+    "money": 1228,
+    "energy": 60,
+    "hunger": 5,
+    "luck": 1,
+    "lastWork": 1774252329871,
+    "maxEnergy": 100,
+    "maxHunger": 100,
+    "foodInventory": {
+      "sandwich": {
+        "qty": 5
+      },
+      "steak": {
+        "qty": 1
+      }
+    },
+    "tokens": 63,
+    "lastFight": 1774252351673,
+    "inventory": {
+      "swords": [
+        {
+          "id": "steel_sword",
+          "name": "Steel Sword",
+          "emoji": "⚔️",
+          "multiplier": 1.6,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774252268888
+        }
+      ],
+      "eyes-of-naruto": [
+        {
+          "id": "sharingan",
+          "name": "Sharingan",
+          "emoji": "🔴",
+          "multiplier": 1.5,
+          "rarity": "Common",
+          "weight": 40,
+          "obtainedAt": 1774252273095
+        }
+      ]
+    },
+    "equipped": {
+      "swords": "steel_sword",
+      "eyes-of-naruto": "sharingan"
+    }
+  }
+}
