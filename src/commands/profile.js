@@ -40,9 +40,9 @@ module.exports = {
       .setTitle(`⚔️ ${interaction.user.username}'s Profile`)
       .setThumbnail(interaction.user.displayAvatarURL())
       .addFields(
-        { name: "💰 Tokens",        value: `**${player.tokens}**`,               inline: true },
-        { name: "📦 Items Owned",   value: `**${totalItems}**`,                  inline: true },
-        { name: "💥 Total Power",   value: `**${fmtMultiplier(totalMultiplier)}**`, inline: true },
+        { name: "💰 Tokens", value: `**${player.tokens}**`, inline: true },
+        { name: "📦 Items Owned", value: `**${totalItems}**`, inline: true },
+        { name: "💥 Total Power", value: `**${fmtMultiplier(totalMultiplier)}**`, inline: true },
         { name: "🎯 Equipped Items", value: equippedLines.join("\n\n") || "_Nothing equipped yet_", inline: false }
       )
       .setFooter({ text: "Use /fight to earn tokens • /spin to get items • /inventory to see all" });

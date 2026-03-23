@@ -23,9 +23,7 @@ module.exports = {
     const poolKey = interaction.options.getString("pool");
     const pool = GACHA_POOLS[poolKey];
 
-    if (!pool) {
-      return interaction.reply({ content: "❌ Unknown pool.", ephemeral: true });
-    }
+    if (!pool) { return interaction.reply({ content: "❌ Unknown pool.", ephemeral: true }); }
 
     const totalWeight = pool.items.reduce((sum, i) => sum + i.weight, 0);
 

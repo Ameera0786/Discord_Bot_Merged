@@ -29,7 +29,6 @@ function buildFoodButtons(user) {
         const food = resolveFood(user, name);
         if (!food) continue;
 
-        // Discord allows max 5 buttons per row, max 5 rows
         if (count > 0 && count % 5 === 0) {
             rows.push(currentRow);
             currentRow = new ActionRowBuilder();

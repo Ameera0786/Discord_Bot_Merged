@@ -2,7 +2,6 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { getUser } = require('../utils/managers/userManager');
 const { getInventory, resolveFood } = require('../utils/managers/foodManager');
 
-// update later
 async function displayInventory(interaction) {
     if (interaction.deferred || interaction.replied) return;
     await interaction.deferReply();

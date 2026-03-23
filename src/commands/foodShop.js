@@ -9,7 +9,6 @@ module.exports = {
     async execute(interaction) {
         try {
             await interaction.deferReply();
-
             const row = buildShopMenu();
 
             await interaction.editReply({

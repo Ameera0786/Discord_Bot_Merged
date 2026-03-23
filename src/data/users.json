@@ -1,7 +1,7 @@
 {
   "733448947955400796": {
     "money": 1228,
-    "energy": 60,
+    "energy": 100,
     "hunger": 5,
     "luck": 1,
     "lastWork": 1774252329871,
@@ -15,8 +15,8 @@
         "qty": 1
       }
     },
-    "tokens": 63,
-    "lastFight": 1774252351673,
+    "tokens": 2,
+    "lastFight": 1774253013379,
     "inventory": {
       "swords": [
         {
@@ -27,6 +27,42 @@
           "rarity": "Common",
           "weight": 30,
           "obtainedAt": 1774252268888
+        },
+        {
+          "id": "iron_sword",
+          "name": "Iron Sword",
+          "emoji": "🗡️",
+          "multiplier": 1.2,
+          "rarity": "Common",
+          "weight": 40,
+          "obtainedAt": 1774252964133
+        },
+        {
+          "id": "iron_sword",
+          "name": "Iron Sword",
+          "emoji": "🗡️",
+          "multiplier": 1.2,
+          "rarity": "Common",
+          "weight": 40,
+          "obtainedAt": 1774252967241
+        },
+        {
+          "id": "iron_sword",
+          "name": "Iron Sword",
+          "emoji": "🗡️",
+          "multiplier": 1.2,
+          "rarity": "Common",
+          "weight": 40,
+          "obtainedAt": 1774252971502
+        },
+        {
+          "id": "flameblade",
+          "name": "Flameblade",
+          "emoji": "🔥",
+          "multiplier": 2.5,
+          "rarity": "Rare",
+          "weight": 16,
+          "obtainedAt": 1774252973493
         }
       ],
       "eyes-of-naruto": [
@@ -38,12 +74,69 @@
           "rarity": "Common",
           "weight": 40,
           "obtainedAt": 1774252273095
+        },
+        {
+          "id": "rinnegan",
+          "name": "Rinnegan",
+          "emoji": "🟣",
+          "multiplier": 5,
+          "rarity": "Epic",
+          "weight": 7,
+          "obtainedAt": 1774252864911
+        },
+        {
+          "id": "byakugan",
+          "name": "Byakugan",
+          "emoji": "⚪",
+          "multiplier": 1.8,
+          "rarity": "Common",
+          "weight": 35,
+          "obtainedAt": 1774252985576
+        }
+      ],
+      "auras": [
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774252866935
+        },
+        {
+          "id": "storm_aura",
+          "name": "Storm Aura",
+          "emoji": "🌪️",
+          "multiplier": 2.2,
+          "rarity": "Rare",
+          "weight": 15,
+          "obtainedAt": 1774252870161
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774252872331
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774253023114
         }
       ]
     },
     "equipped": {
-      "swords": "steel_sword",
-      "eyes-of-naruto": "sharingan"
+      "swords": "flameblade",
+      "eyes-of-naruto": "rinnegan",
+      "auras": "storm_aura"
     }
   }
 }

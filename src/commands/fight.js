@@ -117,11 +117,11 @@ module.exports = {
         .setTitle(`${mob.emoji} Defeated! — ${mob.name}`)
         .setDescription(lossNarratives[Math.floor(Math.random() * lossNarratives.length)])
         .addFields(
-          { name: "💰 Tokens Earned", value: `**+0** tokens`,                                       inline: true },
-          { name: "👛 Your Balance",  value: `**${player.tokens}** tokens`,                         inline: true },
-          { name: "⚔️ Difficulty",    value: diffLabel,                                             inline: true },
-          { name: "💥 Power Bonus",   value: powerLabel,                                            inline: false },
-          { name: "📊 Win Chance",    value: `${Math.round(finalWinChance * 100)}% (base ${Math.round(baseWinChance * 100)}% + bonus)`, inline: false },
+          { name: "💰 Tokens Earned", value: `**+0** tokens`, inline: true },
+          { name: "👛 Your Balance", value: `**${player.tokens}** tokens`, inline: true },
+          { name: "⚔️ Difficulty", value: diffLabel, inline: true },
+          { name: "💥 Power Bonus", value: powerLabel, inline: false },
+          { name: "📊 Win Chance", value: `${Math.round(finalWinChance * 100)}% (base ${Math.round(baseWinChance * 100)}% + bonus)`, inline: false },
         )
         .setFooter({ text: `Cooldown: ${FIGHT_COOLDOWN_MS / 1000}s • Use /spin to boost your power and win more fights!` });
     }
@@ -192,9 +192,9 @@ module.exports = {
         .setTitle(`${mob.emoji} Victory! — ${mob.name}`)
         .setDescription(winNarratives[Math.floor(Math.random() * winNarratives.length)])
         .addFields(
-          { name: "💰 Tokens Earned", value: `**+${tokensEarned}** tokens`,  inline: true },
-          { name: "👛 Your Balance",  value: `**${player.tokens}** tokens`,  inline: true },
-          { name: "⚔️ Difficulty",    value: diffLabel,                      inline: true },
+          { name: "💰 Tokens Earned", value: `**+${tokensEarned}** tokens`, inline: true },
+          { name: "👛 Your Balance", value: `**${player.tokens}** tokens`, inline: true },
+          { name: "⚔️ Difficulty", value: diffLabel, inline: true },
         )
         .setFooter({ text: `Cooldown: ${FIGHT_COOLDOWN_MS / 1000}s • Use /spin to spend tokens!` });
 
@@ -216,10 +216,10 @@ module.exports = {
         .setTitle(`${mob.emoji} Defeated! — ${mob.name}`)
         .setDescription(lossNarratives[Math.floor(Math.random() * lossNarratives.length)])
         .addFields(
-          { name: "💰 Tokens Earned", value: `**+0** tokens`,               inline: true },
-          { name: "👛 Your Balance",  value: `**${player.tokens}** tokens`, inline: true },
-          { name: "⚔️ Difficulty",    value: diffLabel,                     inline: true },
-          { name: "📊 Win Chance",    value: `${Math.round(winChance * 100)}% for this mob`, inline: true },
+          { name: "💰 Tokens Earned", value: `**+0** tokens`, inline: true },
+          { name: "👛 Your Balance", value: `**${player.tokens}** tokens`, inline: true },
+          { name: "⚔️ Difficulty", value: diffLabel, inline: true },
+          { name: "📊 Win Chance", value: `${Math.round(winChance * 100)}% for this mob`, inline: true },
         )
         .setFooter({ text: `Cooldown: ${FIGHT_COOLDOWN_MS / 1000}s • Try again or fight an easier mob!` });
     }
