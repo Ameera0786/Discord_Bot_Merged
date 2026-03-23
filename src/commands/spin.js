@@ -50,8 +50,8 @@ async function doSpin(interaction, poolKey, player) {
       `Multiplier: **${fmtMultiplier(rolledItem.multiplier)}**`
     )
     .addFields(
-      { name: "🔋 Status",        value: isEquipped ? "✅ **Equipped** (Best in slot!)" : isDuplicate ? "📦 Stored (duplicate)" : "📦 Stored in inventory", inline: false },
-      { name: "💰 Tokens Left",   value: `**${player.tokens}** tokens`, inline: true },
+      { name: "🔋 Status", value: isEquipped ? "✅ **Equipped** (Best in slot!)" : isDuplicate ? "📦 Stored (duplicate)" : "📦 Stored in inventory", inline: false },
+      { name: "💰 Tokens Left", value: `**${player.tokens}** tokens`, inline: true },
       { name: "🏆 Best Equipped", value: bestItem ? `${bestItem.emoji} ${bestItem.name} (${fmtMultiplier(bestItem.multiplier)})` : "None", inline: true },
     );
 
@@ -61,8 +61,7 @@ async function doSpin(interaction, poolKey, player) {
   embed.setFooter({ text: `Spin cost: ${pool.spinCost} tokens • /inventory to see all your items` });
 
   // --- Rebuild the dropdown so they can spin again ---
-  const updatedPlayer = getPlayer(interaction.user.id);
-  const menu = buildMenu(updatedPlayer);
+  const menu = buildMenu(player);
   const row = new ActionRowBuilder().addComponents(menu);
 
   return interaction.update({ embeds: [embed], components: [row] });
@@ -98,9 +97,6 @@ async function execute(interaction) {
 
 // Called from index.js when the select menu is used
 async function handleSelect(interaction) {
-    if (interaction.user.id !== interaction.user.id) {
-        return interaction.reply({ content: "❌ This isn't your spin menu!", ephemeral: true });
-    }
     const poolKey = interaction.values[0];
     const player = getPlayer(interaction.user.id);
     await doSpin(interaction, poolKey, player);

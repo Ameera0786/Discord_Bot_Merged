@@ -28,23 +28,22 @@ client.on('interactionCreate', async interaction => {
         // Select menus & buttons
         if (interaction.isStringSelectMenu() || interaction.isButton()) {
             // Food shop
-            if (interaction.customId.startsWith('foodShop_')) {
-                return handleShopInteraction(interaction);
-            }
+            if (interaction.customId.startsWith('foodShop_')) { return handleShopInteraction(interaction); }
+
             // Eat command buttons
-            if (interaction.isButton() && interaction.customId.startsWith('eat_')) {
-                // handled by collector inside the eat command
-                return;
-            }
+            if (interaction.isButton() && interaction.customId.startsWith('eat_')) { return; }
+
             // Work command buttons
-            if (interaction.isButton() && interaction.customId === 'work_again') {
-                // handled by collector inside the work command
-                return;
-            }
+            if (interaction.isButton() && interaction.customId === 'work_again') { return; }
+
             // Gacha spin dropdown
-            if (interaction.isStringSelectMenu() && interaction.customId === 'spin_select') {
+            if (interaction.isStringSelectMenu() && interaction.customId.startsWith('spin_select')) {
                 const spinCommand = client.commands.get('spin');
                 if (spinCommand) await spinCommand.handleSelect(interaction);
+            }
+            if (interaction.isStringSelectMenu() && interaction.customId.startsWith('rates_')){
+                const menuCommand = client.commands.get("rates");
+                if (menuCommand && menuCommand.handleSelect) { await menuCommand.handleSelect(interaction); }
             }
         }
     } catch (err) {
