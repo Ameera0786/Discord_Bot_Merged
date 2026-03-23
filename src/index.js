@@ -4,6 +4,8 @@ const path = require('path');
 const { Client, Collection, GatewayIntentBits, MessageFlags } = require('discord.js');
 const { addEnergy } = require('./utils/managers/userManager');
 const { handleShopInteraction } = require('./handlers/foodShopHandler');
+const { getPlayer } = require('./utils/db');
+const { doSpin } = require('./commands/spin')
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -52,6 +54,14 @@ client.on('interactionCreate', async interaction => {
                     if (menuCommand && menuCommand.handleButton) {
                         await menuCommand.handleButton(interaction);
                     }
+                }
+
+                if (interaction.customId.startsWith("spin_again_")) {
+                    await interaction.deferUpdate();
+                    const userId = interaction.user.id;
+                    const poolKey = interaction.customId.replace("spin_again_", "");
+                    const player = getPlayer(userId);
+                    await doSpin(interaction, poolKey, player);
                 }
             }
         }

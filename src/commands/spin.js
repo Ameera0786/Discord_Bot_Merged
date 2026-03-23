@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const { getPlayer, savePlayer } = require("../utils/db");
 const { GACHA_POOLS } = require("../data/gachaPools");
 const { rollGacha, rarityColor, rarityStars, getBestItem, fmtMultiplier } = require("../utils/gacha");
@@ -15,7 +15,8 @@ async function doSpin(interaction, poolKey, player) {
         `You currently have **${player.tokens}** tokens.\n\n` +
         `Use **/fight** to earn more tokens!`
       );
-    return interaction.update({ embeds: [embed], components: [] });
+      if (interaction.deferred || interaction.replied) { return interaction.editReply({ embeds: [embed], components: [] }); }
+      else { return interaction.reply({ embeds: [embed], components: [], ephemeral: true }); }
   }
 
   // --- Roll ---
@@ -62,10 +63,18 @@ async function doSpin(interaction, poolKey, player) {
 
   // --- Rebuild the dropdown so they can spin again ---
   const menu = buildMenu(player);
+
   const row = new ActionRowBuilder().addComponents(menu);
 
-  return interaction.update({ embeds: [embed], components: [row] });
-}
+    const spinAgainButton = new ButtonBuilder()
+        .setCustomId(`spin_again_${poolKey}`)
+        .setLabel("🎰 Spin Again")
+        .setStyle(ButtonStyle.Primary);
+
+    const buttonRow = new ActionRowBuilder().addComponents(spinAgainButton);
+
+    if (interaction.deferred || interaction.replied) { return interaction.editReply({ embeds: [embed], components: [row, buttonRow] }); }
+    else { return interaction.update({ embeds: [embed], components: [row, buttonRow] }); }}
 
 function buildMenu(player) {
   return new StringSelectMenuBuilder()
@@ -97,6 +106,7 @@ async function execute(interaction) {
 
 // Called from index.js when the select menu is used
 async function handleSelect(interaction) {
+    await interaction.deferUpdate();
     const poolKey = interaction.values[0];
     const player = getPlayer(interaction.user.id);
     await doSpin(interaction, poolKey, player);
@@ -109,4 +119,5 @@ module.exports = {
 
   execute,
   handleSelect,
+    doSpin
 };
