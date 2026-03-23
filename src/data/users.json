@@ -15,8 +15,8 @@
         "qty": 1
       }
     },
-    "tokens": 110,
-    "lastFight": 1774254242817,
+    "tokens": 26,
+    "lastFight": 1774256176726,
     "inventory": {
       "swords": [
         {
@@ -63,6 +63,42 @@
           "rarity": "Rare",
           "weight": 16,
           "obtainedAt": 1774252973493
+        },
+        {
+          "id": "iron_sword",
+          "name": "Iron Sword",
+          "emoji": "🗡️",
+          "multiplier": 1.2,
+          "rarity": "Common",
+          "weight": 40,
+          "obtainedAt": 1774255257814
+        },
+        {
+          "id": "iron_sword",
+          "name": "Iron Sword",
+          "emoji": "🗡️",
+          "multiplier": 1.2,
+          "rarity": "Common",
+          "weight": 40,
+          "obtainedAt": 1774255260801
+        },
+        {
+          "id": "iron_sword",
+          "name": "Iron Sword",
+          "emoji": "🗡️",
+          "multiplier": 1.2,
+          "rarity": "Common",
+          "weight": 40,
+          "obtainedAt": 1774255263584
+        },
+        {
+          "id": "steel_sword",
+          "name": "Steel Sword",
+          "emoji": "⚔️",
+          "multiplier": 1.6,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774255268537
         }
       ],
       "eyes-of-naruto": [
@@ -130,6 +166,231 @@
           "rarity": "Common",
           "weight": 45,
           "obtainedAt": 1774253023114
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774255271725
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255351716
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255353928
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255355384
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774255356909
+        },
+        {
+          "id": "storm_aura",
+          "name": "Storm Aura",
+          "emoji": "🌪️",
+          "multiplier": 2.2,
+          "rarity": "Rare",
+          "weight": 15,
+          "obtainedAt": 1774255358287
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774255359494
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774255360918
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255362272
+        },
+        {
+          "id": "storm_aura",
+          "name": "Storm Aura",
+          "emoji": "🌪️",
+          "multiplier": 2.2,
+          "rarity": "Rare",
+          "weight": 15,
+          "obtainedAt": 1774255363811
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255365996
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255367301
+        },
+        {
+          "id": "storm_aura",
+          "name": "Storm Aura",
+          "emoji": "🌪️",
+          "multiplier": 2.2,
+          "rarity": "Rare",
+          "weight": 15,
+          "obtainedAt": 1774255368665
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255370159
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774255371589
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774256225285
+        },
+        {
+          "id": "storm_aura",
+          "name": "Storm Aura",
+          "emoji": "🌪️",
+          "multiplier": 2.2,
+          "rarity": "Rare",
+          "weight": 15,
+          "obtainedAt": 1774256228615
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774256230605
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774256232442
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774256234029
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774256235762
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774256237401
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774256239360
+        },
+        {
+          "id": "dim_aura",
+          "name": "Dim Aura",
+          "emoji": "🌫️",
+          "multiplier": 1.1,
+          "rarity": "Common",
+          "weight": 45,
+          "obtainedAt": 1774256241041
+        },
+        {
+          "id": "flame_aura",
+          "name": "Flame Aura",
+          "emoji": "🔶",
+          "multiplier": 1.4,
+          "rarity": "Common",
+          "weight": 30,
+          "obtainedAt": 1774256242744
         }
       ]
     },
