@@ -45,7 +45,7 @@ async function handleShopInteraction(interaction) {
             state.item = null;
             state.quantityIndex = 0;
             return interaction.update({
-                content: '🛒 Welcome to the shop!',
+                content: '🛒 Welcome to the food shop!',
                 embeds: [],
                 components: [buildShopMenu(foods)]
             });
